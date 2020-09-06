@@ -6,13 +6,23 @@
 
 | Metadata | Value |  
 |----------|-------|
-| *Contributors* | David Anthoff, github.com/davidanthoff |
+| *Contributors* | [David Anthoff](https://github.com/davidanthoff) & [Thomas Hagebols](https://github.com/ThomasHagebols) |
 | *Definition type* | Image |
 | *Works in Codespaces* | Yes |
 | *Container host OS support* | Linux |
 | *Languages, platforms* | Julia |
 
 ## Using this definition with an existing folder
+
+### Optional Configuration:
+
+While the definition itself works unmodified, you can select the version of Julia the container uses by updating the `VARIANT` arg in the included `.devcontainer/devcontainer.json` file.
+
+```json
+"args": { "VARIANT": "1.5" }
+```
+
+### Adding the definition to your project
 
 Just follow these steps:
 

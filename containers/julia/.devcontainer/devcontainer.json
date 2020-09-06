@@ -1,6 +1,28 @@
 {
 	"name": "Julia",
-	"image": "julia",
-	"extensions": ["julialang.language-julia"],
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		// Update 'VARIANT' to pick a Julia version: e.g. 1, 1.4, 1.5
+		"args": {
+			"VARIANT": "1"
+		}
+	},
+	"extensions": [
+		"julialang.language-julia"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
 	"postCreateCommand": "julia --project=. -e 'using Pkg; if (isfile(joinpath(pwd(),\"Manifest.toml\")) || isfile(joinpath(pwd(),\"JuliaManifest.toml\"))) && (isfile(joinpath(pwd(),\"Project.toml\")) || isfile(joinpath(pwd(),\"JuliaProject.toml\"))); Pkg.instantiate(); end'"
+
+	// Uncomment to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+
+	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
 }
